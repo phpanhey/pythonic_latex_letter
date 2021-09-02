@@ -1,0 +1,29 @@
+\documentclass[ fontsize=12pt, parskip=full, paper=A4, fromalign=right, fromphone=false, fromemail=false, version=last,]{scrlttr2}
+\usepackage[utf8]{inputenc}
+\usepackage{eurosym}
+\DeclareUnicodeCharacter{20AC}{\euro}
+\usepackage[ngerman]{babel}
+\usepackage{pdfpages}
+\usepackage[hidelinks]{hyperref}
+\RequirePackage{graphicx}
+
+\begin{document}
+
+\setkomavar{fromname}{:name:}
+\setkomavar{fromaddress}{:street: \\ :zip: :place:}
+\setkomavar{place}{:place:}
+\setkomavar{date}{\today}
+\setkomavar{subject}{:subject:}
+
+\begin{letter}{:destinationaddress:}
+\opening{:opening:}
+:body:
+:closing:
+\vspace*{0.4cm} \newline
+\includegraphics{signature.pdf}
+\newline
+\rule{29mm}{0.2mm} \newline
+\textbf{:name:}
+\end{letter}
+
+\end{document}
