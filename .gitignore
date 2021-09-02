@@ -4,3 +4,4 @@
 *.log  
 *.out
 tmp.tex
+.DS_Store
