@@ -6,7 +6,7 @@ import os
 def main():
     config = get_config()
     populated_latex_markup = populate_latex_src(config)
-    compile_pdf(populated_latex_markup,config["pdf_filename"])
+    compile_pdf(populated_latex_markup, config["pdf_filename"])
 
 
 def get_config():
@@ -30,12 +30,22 @@ def populate_latex_src(config):
         .replace(":zip:", config["zip"])
         .replace(":place:", config["place"])
         .replace(":subject:", config["subject"])
-        .replace(":destinationaddress:", "destinationaddress")
+        .replace(
+            ":destinationaddress:",
+            create_destinationaddress(config["destinationaddress"]),
+        )
         .replace(":opening:", config["opening"])
         .replace(":body:", config["body"])
         .replace(":closing:", config["closing"])
         .replace(":date:", config["date"])
     )
+
+
+def create_destinationaddress(destinationaddress):
+    res = ""
+    for address_elem in destinationaddress:
+        res += address_elem + " \\newline "
+    return res
 
 
 def compile_pdf(populated_latex_markup, pdf_filename):
