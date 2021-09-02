@@ -34,3 +34,6 @@ you can also specify your own config file by using the  `--config` option:
 ```bash
 python3 pythonic_latex_letter.py --config "cover_note_employer.json"
 ```
+
+## dependecies
+command line `pdflatex` is required.
