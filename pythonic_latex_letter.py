@@ -1,12 +1,14 @@
 import argparse
 import json
 import os
+import glob
 
 
 def main():
     config = get_config()
     populated_latex_markup = populate_latex_src(config)
     compile_pdf(populated_latex_markup, config["pdf_filename"])
+    clean_up()
 
 
 def get_config():
@@ -54,6 +56,9 @@ def compile_pdf(populated_latex_markup, pdf_filename):
     os.system("pdflatex tmp.tex")
     os.system(f"mv tmp.pdf {pdf_filename}")
 
+def clean_up():
+    for filename in glob.glob("tmp*"):
+        os.remove(filename) 
 
 if __name__ == "__main__":
     main()
