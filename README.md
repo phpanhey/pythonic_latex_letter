@@ -3,7 +3,7 @@ pythonic latex letter creates a slick letter with signature. all you need to do 
 
 
 ## usage
-the script depends on a configuration file
+the script depends on a configuration file. name the json file however you like e.g. : `john_doe_contract_cancellation.json`
 
 ```json
 {
