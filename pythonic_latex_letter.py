@@ -2,13 +2,17 @@ import argparse
 import json
 import os
 import glob
+import re
 
 
 def main():
     config = get_config()
     populated_latex_markup = populate_latex_src(config)
-    compile_pdf(populated_latex_markup, config["pdf_filename"])
+    compile_pdf(populated_latex_markup, get_pdf_filename())
     clean_up()
+
+def get_pdf_filename():
+    return parse_args()["config"].split(".")[0] + ".pdf"
 
 
 def get_config():
@@ -19,7 +23,7 @@ def get_config():
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--config", default="config.json")
+    parser.add_argument("--config", required=True)
     return vars(parser.parse_args())
 
 
